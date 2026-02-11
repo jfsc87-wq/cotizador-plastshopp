@@ -231,7 +231,14 @@ if df is not None:
             pdf.cell(155, 10, 'TOTAL COTIZADO:', 0, 0, 'R')
             pdf.cell(35, 10, f"$ {total_final:,.0f}", 0, 1, 'R')
 
-            st.download_button("📩 Descargar PDF", data=pdf.output(dest='S'), file_name=f"Cotizacion_{num_cotiz}_{nombre_cli}.pdf", mime="application/pdf")
+            pdf_output = pdf.output()
+
+            st.download_button(
+            label="📩 Descargar PDF", 
+            data=pdf_output, 
+            file_name=f"Cotizacion_{num_cotiz}_{nombre_cli}.pdf", 
+            mime="application/pdf"
+)
 
         if st.button("🗑️ Vaciar Carrito"):
             st.session_state.carrito = []
